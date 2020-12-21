@@ -1,19 +1,19 @@
-from django.shortcuts import get_object_or_404, render, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import get_object_or_404, redirect, render
 
-
-from .models import Categories
 from .forms import CategoryForm
+from .models import Categories
+
 
 def index(request):
-    all_categories = Categories.objects.all()    #retrive all categories
+    all_categories = Categories.objects.all()
     context = {'all_categories': all_categories}
     return render(request, 'categories/index.html', context)
 
 
 def detail_category(request, pk):
-    category = get_object_or_404(Categories, pk=pk)   #retrive single category
+    category = get_object_or_404(Categories, pk=pk)
     return render(request, 'categories/detail.html', {'category': category})
 
 #create
@@ -47,9 +47,6 @@ def delete_category(request, pk):
     category.delete()
     return redirect('categories:index')
 
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
 
 def signup(request):
     if request.method == 'POST':

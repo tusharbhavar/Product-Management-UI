@@ -4,6 +4,7 @@ A simple inventory management system built with Django. Users can add items and 
 To run project, run the following commands in the project's directory to create the database. When running the software for the first time, it is necessary to run each command for app in the project.
 
 `python manage.py makemigrations`
+
 `python manage.py migrate`
 
 After the first time, above commands should be run to migrate model changes in app.
